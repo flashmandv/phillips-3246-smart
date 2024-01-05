@@ -1,6 +1,7 @@
 ## ESP32/ESP8266 library to control Philips 3200 coffee machine
 
 Based on:\
+https://github.com/mkorenko/esp-phillips-3200 \
 https://github.com/chris7topher/SmartPhilips2200 \
 https://github.com/micki88/Philips-ep3200-testing \
 https://github.com/walthowd/Philips-ep3200-ha \
@@ -10,6 +11,7 @@ A video for explanation can be found here:
 https://youtu.be/jhzEMkL5Xek
 
 Used these parts:
+- [NodeMCU ESP32 v1](https://www.elektor.com/joy-it-nodemcu-esp32-development-board)
 - [Molex 90325-0008 Connector](https://www.mouser.com/ProductDetail/Molex/90325-0008?qs=P41GyhEsKL7wtbj5ylImAA%3D%3D&countryCode=US&currencyCode=USD)
 - [Molex 92315-0825 Cable](https://www.mouser.com/ProductDetail/Molex/92315-0825?qs=sfs0HZCnrVBO%252B%2Fha6s8VfA%3D%3D&countryCode=US&currencyCode=USD)
 - [BC33725TFR NPN Transistor](https://www.mouser.com/ProductDetail/onsemi-Fairchild/BC33725TFR?qs=zGXwibyAaHYlHlvhRz3mQw%3D%3D&countryCode=US&currencyCode=USD)
