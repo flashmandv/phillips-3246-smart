@@ -110,35 +110,35 @@ machine.send_cmd(command);
 ```
 
 
-### ESP8266 wiring example
+### ESP32 wiring example
 
 The wiring within the coffee machine is as shown in the picture:
 ![Wiring](https://github.com/flashmandv/phillips-3246-smart/blob/main/images/wiring.png)
 
-*Warning!*  You need a voltage regulator if your ESP8266 can't handle more then 3V.
+*Warning!*  You need a voltage regulator if your ESP32 can't handle more then 3V. If you use Node MCU DevBoard - then you don't need voltage regulator (as shown here)
 
 ##### Molex Cable has black/red line on side for PIN1 (Shown going right to left above):
 
 - PIN1 - 4-5V from Coffee Machine
-    - Connect to ESP8266 and PIN1 on Molex 90325-0008 Connector that goes to display
+    - Connect to ESP832 and PIN1 on Molex 90325-0008 Connector that goes to display
 - PIN2 - Ground
-    - Connect to Ground / GND on ESP8266 and connect to [collector leg of NPN transistor](https://www.mouser.com/datasheet/2/308/1/BC338_D-1802398.pdf)
-- PIN3 - Not used
-- PIN4 - Not used
+    - Connect to Ground / GND on ESP32 and connect to [collector leg of NPN transistor](https://www.mouser.com/datasheet/2/308/1/BC338_D-1802398.pdf)
+- PIN3 - Ground. Connect to the PIN2 ground (otherwise the display on some machines does not start)
+- PIN4 - WakeUp - Not used
 - PIN5 - RX
-    - This is actually TX from the coffee machine, but connects to RX pin on ESP8266
+    - This is actually TX from the coffee machine, but connects to RX pin on ESP32
         - This pin is `RXD0` / `GPIO3` on most boards
     - Also connect to PIN5 on Molex 90325-0008 Connector that goes to display
 - PIN6 - TX
-    - This is actually RX from coffee machine, but connects to TX pin on ESP8266
+    - This is actually RX from coffee machine, but connects to TX pin on ESP32
         - This pin is `TXD0` / `GPIO1` on most boards
-        - This is the pin that we are stealing and routing through the ESP8266
-- PIN7 - Not used
-- PIN8 - Not used
+        - This is the pin that we are stealing and routing through the ESP32
+- PIN7 - Prog Rx - Not used
+- PIN8 - Prog Tx - Not used
 
-##### From the ESP8266 connections not already referenced
-- `D5` / `GPIO14` for TX that connects to PIN6 on Molex 90325-0008 Connector that goes to display
-- `D7` / `GPIO13` for GND to turn off display
+##### From the ESP32 connections not already referenced
+- `GPIO16` for TX that connects to PIN6 on Molex 90325-0008 Connector that goes to display
+- `D23` / `GPIO23` for GND to turn off display
     - Connects to [middle base leg of NPN transistor](https://www.mouser.com/datasheet/2/308/1/BC338_D-1802398.pdf)
 
 ##### From NPN transistor, connections not alread referenced
