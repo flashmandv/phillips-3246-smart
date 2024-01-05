@@ -1,13 +1,18 @@
 ## ESP32/ESP8266 library to control Philips 3200 coffee machine
 
-Based on:\
+This repository is upgraded fork from https://github.com/mkorenko/esp-phillips-3200  which adds Simple WebServer that enables you to control the machine from your mobile/PC browser by accessing the ESP32 IP address.
+It also improves wiring and fixes minor issues.
+Note 1: Update the statically set IP address to match your router settings).
+Note 2: I've set the IP as static because on the previously tested ESP8266 the modules did not connect to my Asus AI mesh router system (and the static IP fixes that).
+
+This project is based on:\
 https://github.com/mkorenko/esp-phillips-3200 \
 https://github.com/chris7topher/SmartPhilips2200 \
 https://github.com/micki88/Philips-ep3200-testing \
 https://github.com/walthowd/Philips-ep3200-ha \
 https://github.com/veonua/SmartPhilips
 
-A video for explanation can be found here:
+A  video in German(by @chris7topher) for explanation with ESP8266 can be found here:
 https://youtu.be/jhzEMkL5Xek
 
 Used these parts:
@@ -23,9 +28,9 @@ For NodeMCU boards you don't need to convert voltage as they have onboard voltag
 ESP32:
 - uses Serial / UART0 to connect to the coffee machine
 - uses HardwareSerial(2) / UART2 - RX2_PIN / TX2_PIN to connect to the display:
-  #define RX2_PIN 16 // Rx from display
-  #define TX2_PIN 17 // Tx not used
-  #define NPN_E_PIN 23 // Gnd for display (to switch it on and off)
+  #define RX2_PIN 16 // Rx2 from display
+  #define TX2_PIN 17 // Tx2 not used
+  #define NPN_E_PIN 23 // D23 Gnd for display (to switch it on and off)
 
 ESP8266:
 - uses Serial / UART0 to connect to connect to the coffee machine
@@ -38,12 +43,6 @@ ESP8266:
 ### Library API / usage example
 Consider the following Arduino IDE project example:
 ```
-// path to this library
-// note: Arduino IDE  accepts custom libs in "src" dir only
-#include "src/esp-phillips-3200/esp-phillips-3200.h"
-
-Phillips3200 machine;
-
 void on_machine_state_changed() {
   // callback is fired when state of the coffee machine changes
 
@@ -84,16 +83,6 @@ void on_machine_state_changed() {
   uint8_t milk_level = machine.current_milk_level;
 }
 
-void setup() {
-  // pass callback function
-  machine.setup(on_machine_state_changed);
-}
-
-void loop() {
-  // required:
-  machine.loop();
-}
-
 // API to control the machine:
 
 // available commands:
@@ -109,7 +98,6 @@ std::string command;
 machine.send_cmd(command);
 ```
 
-
 ### ESP32 wiring example
 
 The wiring within the coffee machine is as shown in the picture:
@@ -117,7 +105,7 @@ The wiring within the coffee machine is as shown in the picture:
 
 *Warning!*  You need a voltage regulator if your ESP32 can't handle more then 3V. If you use Node MCU DevBoard - then you don't need voltage regulator (as shown here)
 
-##### Molex Cable has black/red line on side for PIN1 (Shown going right to left above):
+##### Molex Cable Info. It has black/red line on side for PIN1 (Shown going right to left above):
 
 - PIN1 - 4-5V from Coffee Machine
     - Connect to ESP832 and PIN1 on Molex 90325-0008 Connector that goes to display
@@ -136,10 +124,5 @@ The wiring within the coffee machine is as shown in the picture:
 - PIN7 - Prog Rx - Not used
 - PIN8 - Prog Tx - Not used
 
-##### From the ESP32 connections not already referenced
-- `GPIO16` for TX that connects to PIN6 on Molex 90325-0008 Connector that goes to display
-- `D23` / `GPIO23` for GND to turn off display
-    - Connects to [middle base leg of NPN transistor](https://www.mouser.com/datasheet/2/308/1/BC338_D-1802398.pdf)
-
-##### From NPN transistor, connections not alread referenced
-- [Emitter leg of NPN transistor](https://www.mouser.com/datasheet/2/308/1/BC338_D-1802398.pdf) to PIN2 on Molex 90325-0008 Connector that goes to display
+##### Known Issues:
+- The code has commented buttons for presets (to make you certain type of coffee with certain strangth and water level). But water/strength level settings does not work properly. The machine status is not updated correctly (maybe it needs longer delays..don't have time to debug it. Anybody is welcome to help with that)
