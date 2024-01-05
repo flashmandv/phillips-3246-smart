@@ -129,13 +129,13 @@ The wiring within the coffee machine is as shown in the picture:
 
 ##### Web interface screenshots:
 
-The main manu when you power on the machine (via the web interface)
+The main manu when you power on the machine (via the web interface) \
 ![MainMenu](https://github.com/flashmandv/phillips-3246-smart/blob/main/images/AppMainMenu.jpg)
 
-When you select the brew
+When you select the brew \
 ![MainMenu](https://github.com/flashmandv/phillips-3246-smart/blob/main/images/AppBrewSelected.jpg)
 
-When the machine is off
+When the machine is off \
 ![MainMenu](https://github.com/flashmandv/phillips-3246-smart/blob/main/images/AppMachineOff.jpg)
 
 Note: This web interface is really just a very basic web page. Feel free to improve, stylize and commit to this repo.
