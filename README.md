@@ -98,7 +98,7 @@ std::string command;
 machine.send_cmd(command);
 ```
 
-### ESP32 wiring example
+### NodeMCU ESP32 v1 wiring:
 
 The wiring within the coffee machine is as shown in the picture:
 ![Wiring](https://github.com/flashmandv/phillips-3246-smart/blob/main/images/wiring.png)
@@ -126,3 +126,16 @@ The wiring within the coffee machine is as shown in the picture:
 
 ##### Known Issues:
 - The code has commented buttons for presets (to make you certain type of coffee with certain strangth and water level). But water/strength level settings does not work properly. The machine status is not updated correctly (maybe it needs longer delays..don't have time to debug it. Anybody is welcome to help with that)
+
+##### Web interface screenshots:
+
+The main manu when you power on the machine (via the web interface)
+![MainMenu](https://github.com/flashmandv/phillips-3246-smart/blob/main/images/AppMainMenu.jpg)
+
+When you select the brew
+![MainMenu](https://github.com/flashmandv/phillips-3246-smart/blob/main/images/AppBrewSelected.jpg)
+
+When the machine is off
+![MainMenu](https://github.com/flashmandv/phillips-3246-smart/blob/main/images/AppMachineOff.jpg)
+
+Note: This web interface is really just a very basic web page. Feel free to improve, stylize and commit to this repo.
