@@ -4,9 +4,11 @@
 
 byte Phillips3200::_buf_power_on[12] = {
   0xD5, 0x55, 0x0A, 0x01, 0x03, 0x00, 0x0E, 0x00, 0x00, 0x00, 0x2A, 0x10
+  //0xD5, 0x55, 0x00, 0x01, 0x03, 0x00, 0x0E, 0x01, 0x00, 0x00, 0x39, 0x39
 };
 byte Phillips3200::_buf_power_on1[12] = {
   0xD5, 0x55, 0x02, 0x01, 0x03, 0x00, 0x0E, 0x00, 0x00, 0x00, 0x1C, 0x17
+  //0xD5, 0x55, 0x01, 0x01, 0x03, 0x00, 0x0E, 0x00, 0x00, 0x00, 0x01, 0x25
 };
 byte Phillips3200::_buf_power_off[12] = {
   0xD5, 0x55, 0x00, 0x01, 0x03, 0x00, 0x0E, 0x01, 0x00, 0x00, 0x39, 0x39
@@ -34,7 +36,7 @@ byte Phillips3200::_buf_coffee_strength_level[12] = {
 };
 byte Phillips3200::_buf_coffee_water_level[12] = {
   0xD5, 0x55, 0x00, 0x01, 0x03, 0x00, 0x0E, 0x00, 0x04, 0x00, 0x04, 0x07
-};
+};//                                                           WL
 byte Phillips3200::_buf_coffee_milk_level[12] = {
   0xD5, 0x55, 0x00, 0x01, 0x03, 0x00, 0x0E, 0x00, 0x08, 0x00, 0x1F, 0x16
 };
@@ -51,9 +53,8 @@ byte Phillips3200::_buf_request_info[12] = {
   0xD5, 0x55, 0x00, 0x01, 0x03, 0x00, 0x0E, 0x00, 0x00, 0x00, 0x35, 0x34
 };
 
-void Phillips3200::setup(
-    std::function<void ()> on_machine_state_changed
-) {
+void Phillips3200::setup(std::function<void ()> on_machine_state_changed) {
+
   _on_machine_state_changed = on_machine_state_changed;
 
   MachineSerial.begin(115200);
@@ -70,7 +71,7 @@ void Phillips3200::setup(
 
 void Phillips3200::loop() {
   _display_out_loop();
-  _machine_out_loop();
+  machine_out_loop();
 }
 
 /* machine_cmd */
@@ -81,6 +82,8 @@ void Phillips3200::_send_buf(const byte buf_command[]) {
 }
 
 void Phillips3200::_send_power_on() {
+  
+
   _send_buf(_buf_power_on);
   _send_buf(_buf_power_on1);
   // Workaround: NPN_E_PIN is connected to a NPN Transistor that cuts
@@ -228,7 +231,7 @@ void Phillips3200::_on_machine_out_buffer_changed() {
   }
 }
 
-void Phillips3200::_machine_out_loop() {
+void Phillips3200::machine_out_loop() {
   while (MachineSerial.available() > 0) {
     char b = MachineSerial.read();
     _current_machine_cmd_buf[_machine_cmd_buf_idx++] = b;

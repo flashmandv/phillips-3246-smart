@@ -11,25 +11,32 @@
 #include "Arduino.h"
 
 #if defined(ESP8266)
-#ifndef RX2_PIN
-#define RX2_PIN 14 // Rx from display
-#endif
-#ifndef TX2_PIN
-#define TX2_PIN 12 // Tx not used
-#endif
-#ifndef NPN_E_PIN
-#define NPN_E_PIN 13 // Gnd for display (to switch it on and off)
-#endif
+
+  #ifndef RX2_PIN
+  #define RX2_PIN 14 // Rx from display
+  #endif
+
+  #ifndef TX2_PIN
+  #define TX2_PIN 12 // Tx not used
+  #endif
+
+  #ifndef NPN_E_PIN
+  #define NPN_E_PIN 13 // Gnd for display (to switch it on and off)
+  #endif
+
 #else
-#ifndef RX2_PIN
-#define RX2_PIN 16 // Rx from display
-#endif
-#ifndef TX2_PIN
-#define TX2_PIN 17 // Tx not used
-#endif
-#ifndef NPN_E_PIN
-#define NPN_E_PIN 23 // Gnd for display (to switch it on and off)
-#endif
+
+  #ifndef RX2_PIN
+  #define RX2_PIN 16 // Rx from display
+  #endif
+
+  #ifndef TX2_PIN
+  #define TX2_PIN 17 // Tx not used
+  #endif
+  #ifndef NPN_E_PIN
+  #define NPN_E_PIN 23 // Gnd for display (to switch it on and off)
+  #endif
+
 #endif
 
 #define MachineSerial Serial  // UART0
@@ -56,6 +63,7 @@ class Phillips3200 {
     /* hooks */
     void setup(std::function<void ()> on_machine_state_changed);
     void loop();
+	void machine_out_loop();
 
     /* machine_cmd */
     void send_cmd(const std::string &command);
@@ -74,7 +82,7 @@ class Phillips3200 {
     char _prev_machine_cmd_buf[_machine_cmd_buf_size + 2];
     size_t _machine_cmd_buf_idx = 0;
     void _on_machine_out_buffer_changed();
-    void _machine_out_loop();
+    
 
     /* machine_states */
     uint8_t machine_states_get_level_from_byte(byte value);
