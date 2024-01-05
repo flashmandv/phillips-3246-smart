@@ -113,7 +113,7 @@ machine.send_cmd(command);
 ### ESP8266 wiring example
 
 The wiring within the coffee machine is as shown in the picture:
-![Wiring](https://github.com/mkorenko/esp-phillips-3200/blob/main/images/wiring.png)
+![Wiring](https://github.com/flashmandv/phillips-3246-smart/blob/main/images/wiring.png)
 
 *Warning!*  You need a voltage regulator if your ESP8266 can't handle more then 3V.
 
