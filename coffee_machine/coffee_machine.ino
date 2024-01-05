@@ -2,30 +2,22 @@
 // note: Arduino IDE  accepts custom libs in "src" dir only
 #include "src/esp-phillips-3200/esp-phillips-3200.h"
 //#include <Wire.h>
+//#include <LiquidCrystal_I2C.h>
 
 #include <WiFi.h>
 
 Phillips3200 machine;
 bool inited = false;
 
-#include <SoftwareSerial.h>
-//                    D13  D14
-SoftwareSerial swSer (13, 14);
-
-int counter = 0;
-int wifiCounter = 0;
-//#include <LiquidCrystal_I2C.h>
 //LiquidCrystal_I2C lcd(0x27, 16, 2); // Set the LCD address to 0x27 for a 16 chars and 2 line display
 
 //button code
-//int led = 5;     // LED pin
 int button = 16; // push button is connected
 int temp = 0; 	 // temporary variable for reading the button pin status
 int cleared = 0;
 
 //WIFI CODE/////////////////////////////////////////////////////////
 // Load Wi-Fi library
-
 
 // Replace with your network credentials
 const char* ssid     = "<YOUR WIFI NAME>";
@@ -37,13 +29,12 @@ WiFiServer server(80);
 // Variable to store the HTTP request
 String header;
 
-
 // Current time
 unsigned long currentTime = millis();
 // Previous time
 unsigned long previousTime = 0; 
 // Define timeout time in milliseconds (example: 2000ms = 2s)
-const long timeoutTime = 2000;
+const long timeoutTime = 5000;
 
 const char* wl_status_to_string(wl_status_t status) {
   switch (status) {
@@ -253,7 +244,7 @@ void loop() {
   machine.loop();
  
 
-  //BUTTON CODE////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //HARDWARE BUTTON TEST CODE///////////////////////////////////////////////////////////////////////////////////////////////////
   /*temp = digitalRead(button);
 
   if (temp == LOW && cleared == 0) {

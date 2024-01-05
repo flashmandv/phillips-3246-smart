@@ -24,7 +24,7 @@
   #define NPN_E_PIN 13 // Gnd for display (to switch it on and off)
   #endif
 
-#else
+#else //ESP32
 
   #ifndef RX2_PIN
   #define RX2_PIN 16 // Rx from display
@@ -33,6 +33,7 @@
   #ifndef TX2_PIN
   #define TX2_PIN 17 // Tx not used
   #endif
+  
   #ifndef NPN_E_PIN
   #define NPN_E_PIN 23 // Gnd for display (to switch it on and off)
   #endif
