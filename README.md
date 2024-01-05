@@ -23,6 +23,8 @@ Used these parts:
 
 For NodeMCU boards you don't need to convert voltage as they have onboard voltage regulators.
 
+My Arduino IDE board name: **DOIT ESP32 DEVKIT V1**
+
 ### Library defaults
 ```
 ESP32:
