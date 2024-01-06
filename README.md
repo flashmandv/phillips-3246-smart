@@ -1,9 +1,9 @@
 ## ESP32/ESP8266 library to control Philips 3200 coffee machine
 
 This repository is upgraded fork from https://github.com/mkorenko/esp-phillips-3200  which adds Simple WebServer that enables you to control the machine from your mobile/PC browser by accessing the ESP32 IP address.
-It also improves wiring and fixes minor issues.
-Note 1: Update the statically set IP address to match your router settings).
-Note 2: I've set the IP as static because on the previously tested ESP8266 the modules did not connect to my Asus AI mesh router system (and the static IP fixes that).
+It also improves wiring and fixes minor issues. \
+Note 1: Update the statically set IP address to match your router settings). \
+Note 2: I've set the IP as static because on the previously tested ESP8266 the modules did not connect to my Asus AI mesh router system (and the static IP fixes that). \
 
 This project is based on:\
 https://github.com/mkorenko/esp-phillips-3200 \
@@ -12,7 +12,7 @@ https://github.com/micki88/Philips-ep3200-testing \
 https://github.com/walthowd/Philips-ep3200-ha \
 https://github.com/veonua/SmartPhilips
 
-A  video in German(by @chris7topher) for explanation with ESP8266 can be found here:
+A  video in German(by @chris7topher) for explanation with ESP8266 can be found here: \
 https://youtu.be/jhzEMkL5Xek
 
 Used these parts:
