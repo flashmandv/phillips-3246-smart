@@ -3,7 +3,7 @@
 This repository is upgraded fork from https://github.com/mkorenko/esp-phillips-3200  which adds Simple WebServer that enables you to control the machine from your mobile/PC browser by accessing the ESP32 IP address.
 It also improves wiring and fixes minor issues. \
 Note 1: Update the statically set IP address to match your router settings). \
-Note 2: I've set the IP as static because on the previously tested ESP8266 the modules did not connect to my Asus AI mesh router system (and the static IP fixes that). \
+Note 2: I've set the IP as static because on the previously tested ESP8266 the modules did not connect to my Asus AI mesh router system (and the static IP fixes that).
 
 This project is based on:\
 https://github.com/mkorenko/esp-phillips-3200 \
